@@ -1,0 +1,52 @@
+# github-actions-validate.yml
+#
+# Copy this file to .github/workflows/validate-governance.yml in your project.
+# It runs the governance validation script on every push or pull request that
+# touches Architecture documents or DIP.md.
+#
+# Requirements:
+# - Tools/validate-governance.sh must exist at the repo root (copy from SDLC-Governance).
+# - Architecture documents must follow the structure in Project-Structure-Template.md.
+#
+# To adopt:
+# 1. Copy this file to .github/workflows/validate-governance.yml
+# 2. Copy Tools/validate-governance.sh to your repo
+# 3. Adjust ARCH_PATH below if your Architecture folder is in a different location
+
+name: Governance Check
+
+on:
+  push:
+    paths:
+      - 'Architecture/**'
+      - 'DIP.md'
+      - 'README.md'
+  pull_request:
+    paths:
+      - 'Architecture/**'
+      - 'DIP.md'
+      - 'README.md'
+
+jobs:
+  validate:
+    name: Validate governance documents
+    runs-on: ubuntu-latest
+
+    env:
+      ARCH_PATH: Architecture   # change if your Architecture folder is elsewhere
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make validation script executable
+        run: chmod +x Tools/validate-governance.sh
+
+      - name: Run governance validation
+        run: bash Tools/validate-governance.sh "$ARCH_PATH"
+
+      # Optional: run strict checks on pull requests (warnings become visible in CI output)
+      - name: Run strict governance checks (PR only)
+        if: github.event_name == 'pull_request'
+        run: bash Tools/validate-governance.sh "$ARCH_PATH" --strict
+        continue-on-error: true   # strict mode warnings do not fail the build; remove this line to make them fail

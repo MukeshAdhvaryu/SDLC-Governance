@@ -6,6 +6,9 @@ maintaining effective SDLC governance in a software development organisation.
 These materials are extracted from production use. They are generic and apply to
 any project regardless of language or platform.
 
+Pin to a version tag so changes to this repository do not silently affect
+in-flight work. See [CONTRIBUTING.md](CONTRIBUTING.md) for the versioning model.
+
 ---
 
 ## What Is Here
@@ -27,7 +30,7 @@ folder and reference them from your ADRs and README.
 
 ### Templates
 
-Document templates with instructions. Use them as starting points.
+Document templates with writing instructions. Use them as starting points.
 
 | Template | Summary |
 |----------|---------|
@@ -35,27 +38,78 @@ Document templates with instructions. Use them as starting points.
 | [MD-Template.md](Templates/MD-Template.md) | Major Decision - for large cross-cutting design choices with full deliberation. |
 | [DFR-Template.md](Templates/DFR-Template.md) | Drift Fix Report - for gaps between intended design and current behaviour. |
 | [RDMP-Template.md](Templates/RDMP-Template.md) | Roadmap - phased delivery tracker with status table. |
-| [DIP-Template.md](Templates/DIP-Template.md) | Document Index Page - repository catalogue with dummy entries and policy links. |
+| [DIP-Template.md](Templates/DIP-Template.md) | Document Index Page - repository catalogue with working example links and instructions. |
 | [Semantic-Rule-Template.md](Templates/Semantic-Rule-Template.md) | Guide for writing machine-checkable semantic rules derived from specifications. |
 | [Specification-Template.md](Templates/Specification-Template.md) | Guide for writing human-readable specifications for a system area. |
 | [Project-Structure-Template.md](Templates/Project-Structure-Template.md) | Recommended folder layout with Architecture as the top-level independent layer. |
+| [github-actions-validate.yml](Templates/github-actions-validate.yml) | GitHub Actions workflow template - copy to .github/workflows/ in your project. |
+
+### Examples
+
+Filled-out documents showing the templates applied to a fictitious project (users,
+orders, products). The [DIP-Template.md](Templates/DIP-Template.md) links to these
+so every entry resolves.
+
+| Example | What it shows |
+|---------|--------------|
+| [ADR-001-Contract-Based-Testing.md](Examples/Architecture/ADRs/ADR-001-Contract-Based-Testing.md) | Full ADR with status table, context, decision, rationale, and consequences. |
+| [ADR-002-No-Magic-Values.md](Examples/Architecture/ADRs/ADR-002-No-Magic-Values.md) | ADR with partial status - some items shipped, one still in progress. |
+| [ADR-003-Layered-Architecture.md](Examples/Architecture/ADRs/ADR-003-Layered-Architecture.md) | ADR with a deferred item (architecture enforcement test). |
+| [MD-001-Interface-Decomposition.md](Examples/Architecture/Major-Decisions/MD-001-Interface-Decomposition.md) | Major Decision with problem statement, positions, and deliberation record. |
+| [MD-002-Documentation-First.md](Examples/Architecture/Major-Decisions/MD-002-Documentation-First.md) | Major Decision with fully shipped status table. |
+| [DFR-001-Repository-Layer-Bypass.md](Examples/Architecture/Drift-Reports/DFR-001-Repository-Layer-Bypass.md) | Resolved drift with complete journey log and task evidence. |
+| [DFR-002-Config-Hardcoded-In-Service.md](Examples/Architecture/Drift-Reports/DFR-002-Config-Hardcoded-In-Service.md) | In-progress drift with partially resolved tasks and a deferred CI check. |
+| [RDMP-Core.md](Examples/Architecture/Roadmap/RDMP-Core.md) | Roadmap with mixed status: shipped, in-progress, and not-started rows. |
+| [RDMP-API.md](Examples/Architecture/Roadmap/RDMP-API.md) | Roadmap with a deferred integration test suite and a known gaps table. |
+
+### Tools
+
+Scripts that enforce the policies mechanically. Run them locally or wire them
+into CI using the provided GitHub Actions template.
+
+| Tool | What it checks |
+|------|---------------|
+| [Tools/validate-governance.ps1](Tools/validate-governance.ps1) | PowerShell. Run from your repo root. |
+| [Tools/validate-governance.sh](Tools/validate-governance.sh) | Bash. Run from your repo root. |
+
+**Default checks (always run):**
+- `DIP.md` exists at the repository root
+- Every ADR has a `## Status` section
+- Every Major Decision has a `## Status` section
+- Every Drift Report has a `## Status` section
+- Every Roadmap file has a `## Status` section
+- ADR files follow the `ADR-NNN-Name.md` naming convention
+- MD files follow the `MD-NNN-Name.md` naming convention
+- DFR files follow the `DFR-NNN-Name.md` naming convention
+
+**Strict mode checks (`--strict` flag):**
+- No em dashes (use hyphen `-`)
+
+```powershell
+# From your project root (Windows)
+.\Tools\validate-governance.ps1
+.\Tools\validate-governance.ps1 -Strict
+
+# From your project root (Linux/macOS)
+bash Tools/validate-governance.sh
+bash Tools/validate-governance.sh Architecture --strict
+```
 
 ---
 
-## How to Use This
+## How to Adopt
 
-1. Copy the relevant policies into `Architecture/Policies/` in your project.
-2. Use the templates in `Templates/` as starting points for your ADRs, roadmaps, and DIP.
-3. Reference policies from your ADRs using the public URLs in this repository.
-4. For ongoing projects, consider extracting `Architecture/` into its own repository -
-   see [Project-Structure-Template.md](Templates/Project-Structure-Template.md) for when
-   and how to do this.
+1. Copy `Tools/validate-governance.ps1` and `validate-governance.sh` into your project.
+2. Copy the relevant policies into `Architecture/Policies/` in your project.
+3. Copy the templates you need from `Templates/` and fill them out.
+4. Copy `Templates/github-actions-validate.yml` to `.github/workflows/validate-governance.yml`.
+5. Note the version tag you adopted in your project README or DIP.
 
 ---
 
 ## Status Symbols
 
-All status tables in this repository use these ASCII symbols:
+All status tables in this repository use ASCII symbols per [WORK-DONE-POLICY.md](Policies/WORK-DONE-POLICY.md):
 
 | Symbol | Meaning |
 |--------|---------|
@@ -65,5 +119,3 @@ All status tables in this repository use these ASCII symbols:
 | `[*]` | WIP - actively in progress |
 | `[.]` | Deferred - intentionally postponed |
 | `[!]` | Cancelled - decided against; row preserved for audit trail |
-
-See [WORK-DONE-POLICY.md](Policies/WORK-DONE-POLICY.md) for the full format.
