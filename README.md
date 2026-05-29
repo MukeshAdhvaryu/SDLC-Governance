@@ -20,6 +20,8 @@ folder and reference them from your ADRs and README.
 
 | Policy | Summary |
 |--------|---------|
+| [ONBOARDING-POLICY.md](Policies/ONBOARDING-POLICY.md) | Pre-joining preparation, day-one agenda, and 30/60/90-day milestones that eliminate the serial access-waiting problem costing new joiners their first two weeks. |
+| [ROLE-ACCESS-POLICY.md](Policies/ROLE-ACCESS-POLICY.md) | Role-based software and access checklist with dependency ordering and service-portal guidance - so requests run in parallel before day one, not serially after it. |
 | [BEST-ENGINEERING-POLICY.md](Policies/BEST-ENGINEERING-POLICY.md) | Constants, nesting depth, SOLID, and MVP-to-production naming rules. |
 | [DOCUMENTATION-POLICY.md](Policies/DOCUMENTATION-POLICY.md) | Five-tier documentation strategy, README standards, DIP format, and cross-reference rules. |
 | [DRIFT-RESOLUTION-POLICY.md](Policies/DRIFT-RESOLUTION-POLICY.md) | Format and closure criteria for Drift Fix Reports. |
@@ -42,6 +44,7 @@ Document templates with writing instructions. Use them as starting points.
 | [Semantic-Rule-Template.md](Templates/Semantic-Rule-Template.md) | Guide for writing machine-checkable semantic rules derived from specifications. |
 | [Specification-Template.md](Templates/Specification-Template.md) | Guide for writing human-readable specifications for a system area. |
 | [Project-Structure-Template.md](Templates/Project-Structure-Template.md) | Recommended folder layout with Architecture as the top-level independent layer. |
+| [Onboarding-Journey-Recorder.md](Templates/Onboarding-Journey-Recorder.md) | Per-joiner living document tracking access grants, induction sessions, mandatory training, role-specific setup, and day-one logistics. |
 | [github-actions-validate.yml](Templates/github-actions-validate.yml) | GitHub Actions workflow template - copy to .github/workflows/ in your project. |
 
 ### Examples
