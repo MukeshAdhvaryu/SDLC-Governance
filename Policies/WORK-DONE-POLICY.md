@@ -7,6 +7,8 @@ that records what shipped, what did not, what is in flight, and the exact commit
 each state was established. The table is the document's ground truth - not its prose,
 not its headings, not its author's memory.
 
+**Traceability.** Each and every commit within the SDLC can be traced back to its original ADR or MD without much ado. The chain is commit, DFR task, then the decision document the DFR cites; no commit may break it. The commit message names the DFR task and its backing ADR/MD.
+
 ---
 
 ## Decision Flow (Mandatory)
