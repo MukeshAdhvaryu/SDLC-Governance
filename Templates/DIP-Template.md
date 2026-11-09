@@ -61,6 +61,7 @@ entities. Internal implementation details live in `DIP_Internal.md`.
 
 | Name | Document Type | Folder | File Type | Description |
 |------|---------------|--------|-----------|-------------|
+| [AGENT-SKILLS-POLICY.md](https://github.com/MukeshAdhvaryu/SDLC-Governance/blob/main/Policies/AGENT-SKILLS-POLICY.md) | Policy | `Architecture/Policies` | `.md` | Skill files for AI coding agents: what to link, MCP and CLI tool access, and JSON-configured task routing, with one project as an example. |
 | [BEST-ENGINEERING-POLICY.md](https://github.com/MukeshAdhvaryu/SDLC-Governance/blob/main/Policies/BEST-ENGINEERING-POLICY.md) | Policy | `Architecture/Policies` | `.md` | Engineering standards: constants, nesting depth, SOLID, MVP-to-production naming. |
 | [DOCUMENTATION-POLICY.md](https://github.com/MukeshAdhvaryu/SDLC-Governance/blob/main/Policies/DOCUMENTATION-POLICY.md) | Policy | `Architecture/Policies` | `.md` | Five-tier documentation strategy, README standards, DIP format, and cross-reference rules. |
 | [DRIFT-RESOLUTION-POLICY.md](https://github.com/MukeshAdhvaryu/SDLC-Governance/blob/main/Policies/DRIFT-RESOLUTION-POLICY.md) | Policy | `Architecture/Policies` | `.md` | Format and closure criteria for Drift Fix Reports. |

@@ -22,6 +22,7 @@ folder and reference them from your ADRs and README.
 |--------|---------|
 | [ONBOARDING-POLICY.md](Policies/ONBOARDING-POLICY.md) | Pre-joining preparation, day-one agenda, and 30/60/90-day milestones that eliminate the serial access-waiting problem costing new joiners their first two weeks. |
 | [ROLE-ACCESS-POLICY.md](Policies/ROLE-ACCESS-POLICY.md) | Role-based software and access checklist with dependency ordering and service-portal guidance - so requests run in parallel before day one, not serially after it. |
+| [AGENT-SKILLS-POLICY.md](Policies/AGENT-SKILLS-POLICY.md) | How to write skill files for AI coding agents (Claude, Codex): which policies to link, how agents reach tooling through MCP or a CLI facade, and how task assignment and model routing are configured in JSON. Includes one project's setup as a strict example. |
 | [BEST-ENGINEERING-POLICY.md](Policies/BEST-ENGINEERING-POLICY.md) | Constants, nesting depth, SOLID, and MVP-to-production naming rules. |
 | [DOCUMENTATION-POLICY.md](Policies/DOCUMENTATION-POLICY.md) | Five-tier documentation strategy, README standards, DIP format, and cross-reference rules. |
 | [DRIFT-RESOLUTION-POLICY.md](Policies/DRIFT-RESOLUTION-POLICY.md) | The DFR as the unit of work: a drift is a defect or a non-implementation of a ratified design. Who creates and approves each document type, plus format and closure criteria for Drift Fix Reports. |
