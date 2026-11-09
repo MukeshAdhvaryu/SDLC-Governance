@@ -24,11 +24,11 @@ folder and reference them from your ADRs and README.
 | [ROLE-ACCESS-POLICY.md](Policies/ROLE-ACCESS-POLICY.md) | Role-based software and access checklist with dependency ordering and service-portal guidance - so requests run in parallel before day one, not serially after it. |
 | [BEST-ENGINEERING-POLICY.md](Policies/BEST-ENGINEERING-POLICY.md) | Constants, nesting depth, SOLID, and MVP-to-production naming rules. |
 | [DOCUMENTATION-POLICY.md](Policies/DOCUMENTATION-POLICY.md) | Five-tier documentation strategy, README standards, DIP format, and cross-reference rules. |
-| [DRIFT-RESOLUTION-POLICY.md](Policies/DRIFT-RESOLUTION-POLICY.md) | Format and closure criteria for Drift Fix Reports. |
+| [DRIFT-RESOLUTION-POLICY.md](Policies/DRIFT-RESOLUTION-POLICY.md) | The DFR as the unit of work: a drift is a defect or a non-implementation of a ratified design. Who creates and approves each document type, plus format and closure criteria for Drift Fix Reports. |
 | [NAMING-CONVENTION-POLICY.md](Policies/NAMING-CONVENTION-POLICY.md) | Positive capability naming, interface conventions, and namespace alignment. |
 | [SOLIDE-DESIGN-POLICY.md](Policies/SOLIDE-DESIGN-POLICY.md) | SOLIDE: an honest successor to SOLID with Explicit Extension as the sixth principle. |
 | [TESTING-STANDARDS-POLICY.md](Policies/TESTING-STANDARDS-POLICY.md) | Contract-first testing, test categories, anti-patterns, and review criteria. |
-| [WORK-DONE-POLICY.md](Policies/WORK-DONE-POLICY.md) | Mandatory status table format for ADRs, MDs, DFRs, and Roadmaps. |
+| [WORK-DONE-POLICY.md](Policies/WORK-DONE-POLICY.md) | Decision flow (ADR/MD, Roadmap, DFR, commits, tests, status) and the mandatory status table format for ADRs, MDs, DFRs, and Roadmaps. |
 
 ### Templates
 
@@ -38,7 +38,7 @@ Document templates with writing instructions. Use them as starting points.
 |----------|---------|
 | [ADR-Template.md](Templates/ADR-Template.md) | Architecture Decision Record. |
 | [MD-Template.md](Templates/MD-Template.md) | Major Decision - for large cross-cutting design choices with full deliberation. |
-| [DFR-Template.md](Templates/DFR-Template.md) | Drift Fix Report - for gaps between intended design and current behaviour. |
+| [DFR-Template.md](Templates/DFR-Template.md) | Drift Fix Report, the unit of work - for defects (behaviour that contradicts the ratified design) and non-implementations (ratified design not yet built). |
 | [RDMP-Template.md](Templates/RDMP-Template.md) | Roadmap - phased delivery tracker with status table. |
 | [DIP-Template.md](Templates/DIP-Template.md) | Document Index Page - repository catalogue with working example links and instructions. |
 | [Semantic-Rule-Template.md](Templates/Semantic-Rule-Template.md) | Guide for writing machine-checkable semantic rules derived from specifications. |
@@ -62,6 +62,7 @@ so every entry resolves.
 | [MD-002-Documentation-First.md](Examples/Architecture/Major-Decisions/MD-002-Documentation-First.md) | Major Decision with fully shipped status table. |
 | [DFR-001-Repository-Layer-Bypass.md](Examples/Architecture/Drift-Reports/DFR-001-Repository-Layer-Bypass.md) | Resolved drift with complete journey log and task evidence. |
 | [DFR-002-Config-Hardcoded-In-Service.md](Examples/Architecture/Drift-Reports/DFR-002-Config-Hardcoded-In-Service.md) | In-progress drift with partially resolved tasks and a deferred CI check. |
+| [DFR-003-Architecture-Enforcement-Test-Not-Implemented.md](Examples/Architecture/Drift-Reports/DFR-003-Architecture-Enforcement-Test-Not-Implemented.md) | In-progress non-implementation drift: a ratified rule with no enforcement behind it, with an approver recorded. |
 | [RDMP-Core.md](Examples/Architecture/Roadmap/RDMP-Core.md) | Roadmap with mixed status: shipped, in-progress, and not-started rows. |
 | [RDMP-API.md](Examples/Architecture/Roadmap/RDMP-API.md) | Roadmap with a deferred integration test suite and a known gaps table. |
 

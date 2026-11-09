@@ -77,6 +77,7 @@ entities. Internal implementation details live in `DIP_Internal.md`.
 |------|---------------|--------|-----------|-------------|
 | [DFR-001-Repository-Layer-Bypass.md](Examples/Architecture/Drift-Reports/DFR-001-Repository-Layer-Bypass.md) | Drift Report | `Architecture/Drift-Reports` | `.md` | Service layer instantiated infrastructure directly; resolved by switching to constructor injection. |
 | [DFR-002-Config-Hardcoded-In-Service.md](Examples/Architecture/Drift-Reports/DFR-002-Config-Hardcoded-In-Service.md) | Drift Report | `Architecture/Drift-Reports` | `.md` | Role names and limits hardcoded as string/number literals in UserService; partially resolved. |
+| [DFR-003-Architecture-Enforcement-Test-Not-Implemented.md](Examples/Architecture/Drift-Reports/DFR-003-Architecture-Enforcement-Test-Not-Implemented.md) | Drift Report | `Architecture/Drift-Reports` | `.md` | Non-implementation: ADR-003's layer rules are ratified but no architecture test enforces them; in progress. |
 
 ---
 

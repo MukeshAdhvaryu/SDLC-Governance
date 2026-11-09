@@ -15,43 +15,59 @@ All new work must follow this chain in order. No step may be skipped.
 
 ```mermaid
 flowchart TD
-    A["ADR / MD / DFR\n─────────────────\nDecision: what, why,\nalternatives rejected"]
+    A["ADR / MD\n─────────────────\nDecision: what, why,\nalternatives rejected"]
     B["Roadmap\n─────────────────\nPlan: phases, order,\nwhat done looks like"]
-    C["Commit Group\n─────────────────\nImplementation: one logical\nsquashed commit per feature;\nmessage cites backing ADR/MD"]
-    D["Tests\n─────────────────\nVerification: spec-suite or\ncontract tests proving behaviour"]
-    E["Status Master\n─────────────────\nTruth: rows derived strictly\nfrom test outcomes"]
+    C["DFR - unit of work\n─────────────────\nImplementation plan in detail:\ntasks, owners, evidence;\ndaily and stand-up material"]
+    D["Commit Group\n─────────────────\nImplementation: one logical\nsquashed commit per feature;\nmessage cites the DFR task\nand its backing ADR/MD"]
+    E["Tests\n─────────────────\nVerification: spec-suite or\ncontract tests proving behaviour"]
+    F["Status Master\n─────────────────\nTruth: rows derived strictly\nfrom test outcomes"]
 
     A -->|"drives"| B
-    B -->|"groups into"| C
-    C -->|"verified by"| D
-    D -->|"evidence for"| E
+    B -->|"is delivered through"| C
+    C -->|"lands as"| D
+    D -->|"verified by"| E
+    E -->|"evidence for"| F
 
     style A fill:#1a1a2e,color:#e0e0ff,stroke:#4444aa
     style B fill:#1a2e1a,color:#e0ffe0,stroke:#44aa44
-    style C fill:#2e1a1a,color:#ffe0e0,stroke:#aa4444
-    style D fill:#2e2a1a,color:#fff0c0,stroke:#aaaa44
-    style E fill:#1a2a2e,color:#c0f0ff,stroke:#44aaaa
+    style C fill:#2e1a2e,color:#ffe0ff,stroke:#aa44aa
+    style D fill:#2e1a1a,color:#ffe0e0,stroke:#aa4444
+    style E fill:#2e2a1a,color:#fff0c0,stroke:#aaaa44
+    style F fill:#1a2a2e,color:#c0f0ff,stroke:#44aaaa
 ```
 
 ### What each layer means
 
-| Layer | Document(s) | Answers | Owned by |
+| Layer | Document(s) | Answers | Created by / used by |
 |---|---|---|---|
-| **Decision** | ADR, MD, DFR | Why this design? What alternatives were rejected? | Decision owner |
-| **Roadmap** | RDMP-*.md | How do we get there? What phases, in what order? | Team lead |
-| **Commit group** | git history | What exactly changed? Which roadmap item does this close? | Developer |
+| **Decision** | ADR, MD | Why this design? What alternatives were rejected? | Created by architects and principal engineers; read by technical leads and senior engineers who implement from them |
+| **Roadmap** | RDMP-*.md | How do we get there? What phases, in what order? | Created by technical leads and senior engineers; presented in higher-level group meetings and sprint planning; read downstream by dev teams. Row status rolls up from DFR tasks |
+| **Unit of work** | DFR-*.md | How is the work being delivered, day to day? Which defect is fixed, or which ratified design is built? | Any member of the dev team creates it; the technical lead, lead developer or senior engineer in charge approves it before work starts; daily and stand-up material |
+| **Commit group** | git history | What exactly changed? Which DFR task does this close? | Developer |
 | **Tests** | Contract tests, spec-suites | Does the implementation actually do what was decided? | Developer |
-| **Status Master** | Project status document | What is provably done, right now, based on test evidence? | Derived — not authored |
+| **Status Master** | Project status document | What is provably done, right now, based on test evidence? | Derived - not authored |
+
+### The DFR is the unit of work
+
+The DFR is the unit of work. It records a **defect** (the repository contradicts
+the ratified design) or a **non-implementation** (the design is ratified and not
+built), and it is where work is tracked and closed. See
+[DRIFT-RESOLUTION-POLICY.md](DRIFT-RESOLUTION-POLICY.md).
+
+Where a DFR covers a roadmap row, the DFR task row is the source status owner:
+it moves first, and the roadmap row mirrors it, citing the DFR and task id.
 
 ### Rules
 
 - ADRs/MDs **drive** Roadmaps. A Roadmap with no backing ADR/MD is a plan without a rationale.
-- A Roadmap **groups** work into commit-sized deliverables. One commit per roadmap phase or feature.
-- Every commit message **cites** its backing ADR/MD (e.g. `feat(auth): implement JWT refresh per ADR-012`).
-- Tests **prove** the behaviour. A feature is not done because the code compiles — it is done because tests pass.
+- A Roadmap **is delivered through** DFRs. Pending roadmap rows are recorded in a DFR (an umbrella DFR per roadmap is acceptable until focused DFRs exist).
+- A DFR is **proposed** by any team member and **approved** by the technical lead, lead developer or senior engineer in charge before work starts.
+- A DFR **lands as** commit-sized deliverables. One commit per DFR task or feature.
+- Every commit message **cites** its DFR task and its backing ADR/MD (e.g. `feat(auth): implement JWT refresh per ADR-012 (DFR-014-T02)`).
+- Tests **prove** the behaviour. A feature is not done because the code compiles - it is done because tests pass.
 - Status Master rows are **derived**, never authored. Mark `[x]` only when a test passes and a commit SHA exists.
-- Implementation details already covered by an existing ADR/MD do not need a new decision doc — they are details of an already-decided design.
-- If work starts without a backing ADR/MD, stop and write one first.
+- Implementation details already covered by an existing ADR/MD do not need a new decision doc - they are details of an already-decided design.
+- If work starts without a backing ADR/MD/DFR, stop and write one first.
 
 ---
 
@@ -129,8 +145,11 @@ whether its downstream consequences have been acted on. One row per consequence.
 
 ### DFR (Drift Reports)
 
-The status table records each **drift item** identified in the report. Status reflects
-whether the drift has been resolved, is being resolved, or is accepted as intentional.
+The DFR is the unit of work. Its status table records each **task** needed to close the
+drift, whether the drift is a defect or a non-implementation of a ratified design. Status
+reflects whether the drift has been resolved, is being resolved, or is accepted as
+intentional. Where the DFR covers a roadmap row, this table is the source status owner and
+the roadmap row mirrors it.
 
 ### Roadmap (RDMP)
 
@@ -169,13 +188,13 @@ state of play.
 ## Method of Elimination (large test failure counts)
 
 When a test run produces a large number of failures, do not attempt to fix them
-individually. Most failures in a batch share a root cause — fix the root and the
+individually. Most failures in a batch share a root cause - fix the root and the
 rest resolve automatically.
 
 **The practice:**
 
 1. Run the suite. Note the failure count.
-2. Pick the **first failing test**. Read only the snippet and the failure message —
+2. Pick the **first failing test**. Read only the snippet and the failure message -
    nothing else.
 3. Diagnose the root cause from that one test. It is almost always representative
    of a whole category.
@@ -203,7 +222,7 @@ observed in practice. None of them feel like mistakes while they are happening.
 ### Stay distant from test evidence
 
 Architectural decisions made without reading test output are decisions made without
-evidence. The test suite is not a CI gate to pass — it is the most precise
+evidence. The test suite is not a CI gate to pass - it is the most precise
 description of what the system actually does. Read it. Not all of it. The first
 failure. Regularly.
 
@@ -221,7 +240,7 @@ The branch cannot be cleanly squashed because nobody can tell what belongs toget
 
 ### Start strong, context-switch before done
 
-A feature that is 80% implemented is not 80% valuable. It is a liability — it
+A feature that is 80% implemented is not 80% valuable. It is a liability - it
 occupies a status row, blocks dependent work, and requires future context
 reconstruction. A `[~] Partial` row that stays partial for two weeks is a sign
 that the feature was abandoned mid-flight.

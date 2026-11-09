@@ -2,8 +2,10 @@
 
 **Date:** YYYY-MM-DD
 **Status:** Open | In Progress | Blocked | Resolved | Superseded
+**Kind:** Defect | Non-implementation | Both (optional; no Kind means Defect)
 **Area:** Short subsystem or component name
 **Owner:** Person or role
+**Approved by:** Technical lead, lead developer or senior engineer in charge (required before work starts)
 
 ---
 
@@ -24,8 +26,10 @@
 State the observed gap between the intended design and what is currently present.
 
 A drift is not just a bug. It is a divergence from a documented or understood
-architectural contract. Be precise: which component, which behaviour, which
-document or decision is being violated?
+architectural contract, and it is also the absence of an implementation of a
+ratified design (non-implementation). The DFR is the unit of work. Be precise:
+which component, which behaviour, which document or decision is being violated,
+or which ratified decision is not yet built?
 
 ---
 
@@ -66,6 +70,7 @@ Common causes:
 State the resolution direction. Which of the following applies?
 
 - **Correct the implementation** to match the intended design.
+- **Implement the ratified design** that is missing (non-implementation).
 - **Revise the intended design** because circumstances have changed and the drift
   is actually acceptable.
 - **Accept the drift as intentional** and record the reason (becomes a `Superseded`
