@@ -14,6 +14,21 @@ private scope is sufficient.
 If constants must be shared within a project or namespace, place them in a separate
 `Constants` file and keep visibility no broader than needed, usually `internal`.
 
+## File Organization
+
+Interfaces and enums may be clubbed together in a single file, but only when they are
+logically connected and part of one bigger picture: a family of related contracts, or
+an enum alongside the interface it serves.
+
+Concrete implementations must never be clubbed, under any circumstance, however small
+or large. Classes, records and structs each get their own file.
+
+**Why:** an interface or enum grouping documents one cohesive contract or vocabulary,
+so the grouping is itself the unit of meaning. A concrete type owns real state and
+behaviour that grows independently of its siblings. Clubbing concrete types hides that
+growth until the file becomes an unreviewable grab-bag, and makes blast-radius review
+(which type actually changed?) harder than it needs to be.
+
 ## Nesting Depth
 
 Maximum nesting depth is three levels. Prefer guard clauses, early returns,

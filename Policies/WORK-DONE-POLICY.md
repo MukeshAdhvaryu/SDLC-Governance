@@ -71,6 +71,20 @@ it moves first, and the roadmap row mirrors it, citing the DFR and task id.
 - Implementation details already covered by an existing ADR/MD do not need a new decision doc - they are details of an already-decided design.
 - If work starts without a backing ADR/MD/DFR, stop and write one first.
 
+### Order of status updates
+
+Status moves in one direction only, from the document closest to the work outward:
+
+1. **Source status owner first.** Update the DFR task row. If there is no covering DFR,
+   update the bound roadmap row; for a decision with neither, update the decision's own
+   status table.
+2. **Then the roadmap row** it covers, mirroring the DFR and citing the DFR and task id.
+3. **Then the project status master**, refreshed last, as a snapshot derived from the
+   rows above.
+
+When the snapshot and an originating document disagree, trust the originating document
+and fix the snapshot. Cite the test method names as evidence when marking a row `[x]`.
+
 ### Specification and semantic tiers
 
 Between the decision and the tests, a project may keep two further documents:
@@ -166,11 +180,41 @@ reflects whether the drift has been resolved, is being resolved, or is accepted 
 intentional. Where the DFR covers a roadmap row, this table is the source status owner and
 the roadmap row mirrors it.
 
+**Closure (mandatory).** The moment every task row of a DFR reads `[x]`, close it in the
+SAME commit as the final status update. Do not leave it for a later cleanup pass:
+
+1. Change the header **Status** line to `Resolved <date>, all N tasks`.
+2. Move the file to the project's `Closed/` folder for DFRs with a real move
+   (`git mv`, or a tool sequence that leaves git recording a rename) so history is
+   preserved, not a delete-and-recreate.
+3. Fix every relative link inside the moved file for the new folder depth. A link to
+   another DFR that is also in `Closed/` becomes a bare sibling link; a link to one
+   still open gets one more `../` prepended.
+4. Move the entry in the DFR index from its Open listing to its Closed listing.
+5. Update every OTHER document that links to this DFR (another DFR, an MD, a roadmap, the
+   DIP row) to the new path in the same change. A stale link to a moved file is not
+   acceptable.
+
+Never move a DFR with any task row still open, `[~]` Partial included, however much of it
+has shipped. Closure is all-or-nothing on the task table, exactly like `[x]` itself. An
+umbrella DFR closes when every task is `[x]`, `[.]` with a recorded reason, or `[!]`.
+
 ### Roadmap (RDMP)
 
 The status table is the **tracker** for the roadmap's deliverables. Each phase or named
 item gets a row. The roadmap body may contain narrative, but the table is the canonical
 state of play.
+
+**Closure (mandatory).** The moment every status row of an RDMP reads `[x]` or `[!]`,
+close it in the SAME commit as the final status update, by the same steps as a DFR:
+
+1. State `CLOSED <date>` in the header or intro.
+2. Move the file to the project's `Closed/` folder for roadmaps with a real move.
+3. Fix every relative link inside the moved file for the new depth.
+4. Update every OTHER document that links to it (an MD, an ADR, a DFR, another RDMP, and
+   the DIP row's link and folder column) in the same change.
+5. Rewrite any prose in the moved file that claims to describe the CURRENT state (for
+   example a baseline test count) so it reads as a dated snapshot, not as live truth.
 
 ---
 
@@ -197,6 +241,45 @@ state of play.
 
 7. **Status derives from tests.** Project status rows must reflect actual test outcomes
    only. Never mark a feature shipped based on code inspection alone.
+
+---
+
+## Real-Run Proof (Mandatory)
+
+Any work that changes behaviour a running program can observe must end with a proof
+that runs the **real artifact** (compiled, packaged, deployed or started as users get
+it) and reads its actual output. Unit tests and contract tests are necessary, but they
+usually run against fakes, mocks or intermediate representations. They prove the code
+*has the right shape*, not that the delivered thing *works*.
+
+**Why:** features repeatedly pass every isolated test while being broken, or never
+implemented, at run time. The gap is found only when someone finally runs the real
+thing. A green suite built on fakes is a statement about the fakes.
+
+**How to apply:**
+
+- Add a real-run check to the area's end-to-end project: one `expected X, got Y` line
+  per fact, exercising the new behaviour through the real entry point.
+- Run it, and read its output, before marking the work item `[x]`. A clean build or a
+  green unit suite is not enough.
+- If only a partial path works (an interpreter or stub path with the real one deferred),
+  the status row must say so: `[~]`, not `[x]`. The row stays open until the real
+  path is proven.
+- Nothing to run, nothing to prove: documentation-only and compile-time-only changes are
+  outside this rule.
+
+---
+
+## Enforcement
+
+- The **author** checks that the verification chain is complete before closing any work
+  cycle.
+- The **reviewer** checks that implementation tests exist before a feature is reported
+  implemented, and challenges any row marked `[x]` without test evidence.
+- The **decision owner** (technical lead, lead developer or senior engineer in charge) is
+  the final authority on exceptions.
+- ADR, MD, RDMP and DFR status tables are the authoritative records. The project status
+  master is derived from them.
 
 ---
 

@@ -23,13 +23,13 @@ folder and reference them from your ADRs and README.
 | [ONBOARDING-POLICY.md](Policies/ONBOARDING-POLICY.md) | Pre-joining preparation, day-one agenda, and 30/60/90-day milestones that eliminate the serial access-waiting problem costing new joiners their first two weeks. |
 | [ROLE-ACCESS-POLICY.md](Policies/ROLE-ACCESS-POLICY.md) | Role-based software and access checklist with dependency ordering and service-portal guidance - so requests run in parallel before day one, not serially after it. |
 | [AGENT-SKILLS-POLICY.md](Policies/AGENT-SKILLS-POLICY.md) | How to write skill files for AI coding agents (Claude, Codex): which policies to link, how agents reach tooling through MCP or a CLI facade, and how task assignment and model routing are configured in JSON. The policy is generic; one project's setup is kept separately as a worked example in [Examples/Agent-Skills/](Examples/Agent-Skills/ME-Agent-Setup.md). |
-| [BEST-ENGINEERING-POLICY.md](Policies/BEST-ENGINEERING-POLICY.md) | Constants, nesting depth, SOLID, and MVP-to-production naming rules. |
+| [BEST-ENGINEERING-POLICY.md](Policies/BEST-ENGINEERING-POLICY.md) | Constants, file organization, nesting depth, SOLID, and MVP-to-production naming rules. |
 | [DOCUMENTATION-POLICY.md](Policies/DOCUMENTATION-POLICY.md) | Five-tier documentation strategy, README standards, DIP format, and cross-reference rules. |
 | [DRIFT-RESOLUTION-POLICY.md](Policies/DRIFT-RESOLUTION-POLICY.md) | The DFR as the unit of work: a drift is a defect or a non-implementation of a ratified design. Who creates and approves each document type, plus format and closure criteria for Drift Fix Reports. |
 | [NAMING-CONVENTION-POLICY.md](Policies/NAMING-CONVENTION-POLICY.md) | Positive capability naming, interface conventions, and namespace alignment. |
 | [SOLIDE-DESIGN-POLICY.md](Policies/SOLIDE-DESIGN-POLICY.md) | SOLIDE: an honest successor to SOLID with Explicit Extension as the sixth principle. |
 | [TESTING-STANDARDS-POLICY.md](Policies/TESTING-STANDARDS-POLICY.md) | Contract-first testing, test categories, anti-patterns, and review criteria. |
-| [WORK-DONE-POLICY.md](Policies/WORK-DONE-POLICY.md) | Decision flow (ADR/MD, Roadmap, DFR, commits, tests, status) and the mandatory status table format for ADRs, MDs, DFRs, and Roadmaps. |
+| [WORK-DONE-POLICY.md](Policies/WORK-DONE-POLICY.md) | Decision flow (ADR/MD, Roadmap, DFR, commits, tests, status), the mandatory status table format, order of status updates, DFR and roadmap closure rules, and real-run proof. |
 
 ### Templates
 
