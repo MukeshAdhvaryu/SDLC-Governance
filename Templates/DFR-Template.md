@@ -15,9 +15,9 @@
 
 | ID | Status | Task | Owner | Evidence |
 |----|--------|------|-------|----------|
-| DFR-NNN-T01 | Not Started | Correct the implementation to match intended design. | Role/person | File, test, or commit - pending. |
-| DFR-NNN-T02 | Not Started | Add regression test protecting the corrected behaviour. | Role/person | Test file - pending. |
-| DFR-NNN-T03 | Not Started | Update documentation to reflect canonical design. | Role/person | Doc file - pending. |
+| DFR-NNN-T01 | [ ] | Correct the implementation to match intended design. | Role/person | File, test, or commit - pending. |
+| DFR-NNN-T02 | [ ] | Add regression test protecting the corrected behaviour. | Role/person | Test file - pending. |
+| DFR-NNN-T03 | [ ] | Update documentation to reflect canonical design. | Role/person | Doc file - pending. |
 
 ---
 

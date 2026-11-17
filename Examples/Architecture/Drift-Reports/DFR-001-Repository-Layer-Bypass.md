@@ -16,10 +16,10 @@
 
 | ID | Status | Task | Owner | Evidence |
 |----|--------|------|-------|----------|
-| DFR-001-T01 | Done | Remove direct SqlOrderRepository instantiation from OrderService. | Platform team | `src/Core/OrderService.cs` - constructor injection added. |
-| DFR-001-T02 | Done | Wire IOrderRepository in the DI container. | Platform team | `src/API/Program.cs` - `AddScoped<IOrderRepository, SqlOrderRepository>()` added. |
-| DFR-001-T03 | Done | Add regression test confirming OrderService receives injected IOrderRepository. | Platform team | `Tests/Integration/OrderServiceDependencyTests.cs` |
-| DFR-001-T04 | Done | Update DIP.md to reflect corrected dependency direction. | Platform team | DIP.md OrderService entry updated. |
+| DFR-001-T01 | [x] | Remove direct SqlOrderRepository instantiation from OrderService. | Platform team | `src/Core/OrderService.cs` - constructor injection added. |
+| DFR-001-T02 | [x] | Wire IOrderRepository in the DI container. | Platform team | `src/API/Program.cs` - `AddScoped<IOrderRepository, SqlOrderRepository>()` added. |
+| DFR-001-T03 | [x] | Add regression test confirming OrderService receives injected IOrderRepository. | Platform team | `Tests/Integration/OrderServiceDependencyTests.cs` |
+| DFR-001-T04 | [x] | Update DIP.md to reflect corrected dependency direction. | Platform team | DIP.md OrderService entry updated. |
 
 ---
 

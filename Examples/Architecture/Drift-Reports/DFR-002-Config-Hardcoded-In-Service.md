@@ -16,8 +16,8 @@
 
 | ID | Status | Task | Owner | Evidence |
 |----|--------|------|-------|----------|
-| DFR-002-T01 | Done | Extract JWT expiry, max login attempts, and role names to Constants.cs. | Platform team | `src/Core/Constants.cs` - UserConstants class added. `a2b3c4d` |
-| DFR-002-T02 | Done | Remove all string literals from UserService that represent role names. | Platform team | `src/Core/UserService.cs` - "admin", "editor", "viewer" replaced with UserConstants.Role.* | `a2b3c4d` |
+| DFR-002-T01 | [x] | Extract JWT expiry, max login attempts, and role names to Constants.cs. | Platform team | `src/Core/Constants.cs` - UserConstants class added. `a2b3c4d` |
+| DFR-002-T02 | [x] | Remove all string literals from UserService that represent role names. | Platform team | `src/Core/UserService.cs` - "admin", "editor", "viewer" replaced with UserConstants.Role.* | `a2b3c4d` |
 | DFR-002-T03 | [*] | Audit remaining services for undiscovered magic values. | Platform team | Grep run; 3 files pending review. |
 | DFR-002-T04 | [ ] | Add linter check for string literals in service files to CI pipeline. | DevOps | Not started. |
 

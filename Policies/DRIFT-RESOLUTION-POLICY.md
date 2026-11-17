@@ -113,7 +113,7 @@ State the resolution direction.
 
 ## Status
 
-Use a status-aware task table. It sits directly under the header so progress is the
+Use a status-aware task table (symbols, see Status Values). It sits directly under the header so progress is the
 first thing a reader sees (see the DFR template).
 
 ## Journey Log
@@ -129,19 +129,20 @@ List files, ADRs, specs, tests, commits, or discussions.
 
 ## Status Values
 
-Use only these task statuses:
+Task rows use the status symbols defined in [WORK-DONE-POLICY.md](WORK-DONE-POLICY.md),
+the same symbols as every other status table in the repository:
 
-| Status | Meaning |
-|--------|---------|
-| `Not Started` | Known work, no implementation begun. |
-| `In Progress` | Actively being changed. |
-| `Blocked` | Cannot proceed until another decision or task completes. |
-| `Review` | Implemented and awaiting review. |
-| `Done` | Completed and verified. |
-| `Superseded` | No longer needed because another decision replaced it. |
+| Symbol | Meaning in a DFR task |
+|--------|-----------------------|
+| `[ ]` | Known work, no implementation begun. |
+| `[*]` | Actively being changed, or implemented and awaiting review. |
+| `[~]` | Partly done; the evidence column says what remains. |
+| `[.]` | Deferred or blocked: cannot proceed until another decision or task completes. The evidence column names the trigger. |
+| `[x]` | Completed and verified, with concrete evidence. |
+| `[!]` | Cancelled or superseded because another decision replaced it. The row is kept for audit. |
 
-The DFR top-level status follows the same lifecycle, but uses `Open`,
-`In Progress`, `Blocked`, `Resolved`, or `Superseded`.
+The DFR **header** status is a document lifecycle, not a task status, and uses
+words: `Open`, `In Progress`, `Blocked`, `Resolved`, or `Superseded`.
 
 ---
 
@@ -151,9 +152,9 @@ Use this table shape:
 
 | ID | Status | Task | Owner | Evidence |
 |----|--------|------|-------|----------|
-| DFR-###-T01 | Not Started | Concrete action. | Role/person | File, test, commit, or pending proof. |
+| DFR-###-T01 | [ ] | Concrete action. | Role/person | File, test, commit, or pending proof. |
 
-Evidence should become concrete before a task moves to `Done`.
+Evidence should become concrete before a task moves to `[x]`.
 
 ---
 

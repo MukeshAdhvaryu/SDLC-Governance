@@ -17,8 +17,8 @@
 
 | ID | Status | Task | Owner | Evidence |
 |----|--------|------|-------|----------|
-| DFR-003-T01 | Done | Choose the architecture-test tool and record it in ADR-003. | Platform team | ADR-003 amended: ArchUnitNET selected. `c3d4e5f` |
-| DFR-003-T02 | Done | Write a test asserting that `src/Core` has no reference to `src/Infrastructure`. | Platform team | `tests/Architecture/LayerRuleTests.cs` - `Core_Does_Not_Reference_Infrastructure`. `c3d4e5f` |
+| DFR-003-T01 | [x] | Choose the architecture-test tool and record it in ADR-003. | Platform team | ADR-003 amended: ArchUnitNET selected. `c3d4e5f` |
+| DFR-003-T02 | [x] | Write a test asserting that `src/Core` has no reference to `src/Infrastructure`. | Platform team | `tests/Architecture/LayerRuleTests.cs` - `Core_Does_Not_Reference_Infrastructure`. `c3d4e5f` |
 | DFR-003-T03 | [*] | Add a second rule: only `src/API` may reference `src/Infrastructure`. | Platform team | Test written; fails on `ReportController` (see Current behavior). |
 | DFR-003-T04 | [ ] | Run the architecture tests in the CI pipeline as a required check. | DevOps | Not started. |
 | DFR-003-T05 | [ ] | Update the ADR-003 status row to Shipped, citing the test names. | Platform team | Pending T03 and T04. |
