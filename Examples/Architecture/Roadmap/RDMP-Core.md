@@ -1,5 +1,7 @@
 # RDMP-Core: Core Domain Delivery
 
+> **Illustrative example.** Fictional project: all names, dates, paths and commit references are invented and are not verifiable history.
+
 > Tracks delivery of the user management, order processing, and product catalog
 > domain layers.
 

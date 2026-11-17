@@ -9,6 +9,30 @@ stable.
 
 ---
 
+## Is This Tier For Your Project?
+
+The semantic tier is **optional**. It earns its cost where the rules themselves are
+the product, and it is overhead elsewhere.
+
+| Project type | Semantic tier | Why |
+|--------------|---------------|-----|
+| **Compilers, interpreters, linters, type checkers** | Strongly recommended, usually mandatory | The rules are consumed by machines: analyzers, generators and diagnostics are built from them. Each rule has an ID and a diagnostic code that tests assert against. The semantic file is the authoritative source. |
+| **Policy engines, schema validators, rules engines, protocol implementations** | Recommended | Many fine-grained rules, each needing an exact trigger condition and outcome. |
+| **Ordinary applications (APIs, web apps, internal tools)** | Usually skip | A spec with numbered rules does the same job. A separate semantic file duplicates the spec and adds a second place to drift. |
+
+**If you skip the tier, keep its benefit.** What the semantic tier really provides is
+a stable rule ID that a test can cite. Without a Sem file, number the rules inside
+the specification (for example `SPC-ORD-012: an order cannot ship unpaid`; see
+[Specification-Template.md](Specification-Template.md)), and cite those IDs from
+tests, DFR tasks and ADRs. The chain then runs Decision, Spec, Tests, with no
+semantic step in between.
+
+**If you use the tier, the chain is:** Decision, Spec, Semantic rules, Tests. The
+spec says what the system must do; the semantic rules say exactly when a rule is
+satisfied and which diagnostic fires when it is not.
+
+---
+
 ## When to Write Semantic Rules
 
 Write a semantic document when:

@@ -71,6 +71,19 @@ it moves first, and the roadmap row mirrors it, citing the DFR and task id.
 - Implementation details already covered by an existing ADR/MD do not need a new decision doc - they are details of an already-decided design.
 - If work starts without a backing ADR/MD/DFR, stop and write one first.
 
+### Specification and semantic tiers
+
+Between the decision and the tests, a project may keep two further documents:
+
+| Tier | Document | Status | Use it when |
+|------|----------|--------|-------------|
+| **Specification** | `Spc-*.md` | Recommended for every project | Behaviour needs a human-readable statement of intent. Number every rule (`SPC-AREA-NNN`) so tests and DFR tasks can cite it. |
+| **Semantic rules** | `Sem-*.md` | **Optional; compiler-type projects** | Rules are machine-consumed or diagnostic-bearing: compilers, type checkers, linters, policy and rules engines. See [Semantic-Rule-Template.md](../Templates/Semantic-Rule-Template.md). |
+
+Projects without a semantic tier follow the same flow, with numbered spec rules
+standing in for semantic rule IDs. Where the tier is used, tests cite semantic rule
+IDs, and a rule is not shipped until a test asserting it passes.
+
 ---
 
 ## Why This Exists

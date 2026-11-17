@@ -1,9 +1,12 @@
 # DFR-001: Service Layer Bypassing Repository Interface
 
+> **Illustrative example.** Fictional project: all names, dates, paths and commit references are invented and are not verifiable history.
+
 **Date:** 2026-02-10
 **Status:** Resolved
 **Area:** src/Core - OrderService
 **Owner:** Platform team
+**Approved by:** Technical lead (Platform team)
 
 ---
 

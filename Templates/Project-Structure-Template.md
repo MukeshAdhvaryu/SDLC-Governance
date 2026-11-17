@@ -49,7 +49,7 @@ ProjectName/
 |  |   |- Spc-Persistence.md
 |  |   `- ...
 |  |
-|  |- Semantics/                   <- Machine-checkable rule sets derived from specs
+|  |- Semantics/                   <- OPTIONAL (compiler-type projects): machine-checkable rule sets derived from specs
 |  |   |- Sem-Domain.md
 |  |   |- Sem-Persistence.md
 |  |   `- ...

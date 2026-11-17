@@ -111,9 +111,10 @@ Point to implementation, docs, tests, or commits that show the drift.
 
 State the resolution direction.
 
-## Resolution Tasks
+## Status
 
-Use a status-aware task table.
+Use a status-aware task table. It sits directly under the header so progress is the
+first thing a reader sees (see the DFR template).
 
 ## Journey Log
 

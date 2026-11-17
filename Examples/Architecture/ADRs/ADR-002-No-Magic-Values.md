@@ -1,5 +1,7 @@
 # ADR-002: No Magic Strings or Numbers
 
+> **Illustrative example.** Fictional project: all names, dates, paths and commit references are invented and are not verifiable history.
+
 **Date:** 2026-01-15
 **Status:** Accepted
 **Author:** Platform team

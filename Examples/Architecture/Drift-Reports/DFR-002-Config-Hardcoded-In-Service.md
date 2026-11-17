@@ -1,9 +1,12 @@
 # DFR-002: Configuration Values Hardcoded in UserService
 
+> **Illustrative example.** Fictional project: all names, dates, paths and commit references are invented and are not verifiable history.
+
 **Date:** 2026-02-10
 **Status:** In Progress
 **Area:** src/Core - UserService
 **Owner:** Platform team
+**Approved by:** Technical lead (Platform team)
 
 ---
 

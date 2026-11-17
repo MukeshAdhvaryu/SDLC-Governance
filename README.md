@@ -22,7 +22,7 @@ folder and reference them from your ADRs and README.
 |--------|---------|
 | [ONBOARDING-POLICY.md](Policies/ONBOARDING-POLICY.md) | Pre-joining preparation, day-one agenda, and 30/60/90-day milestones that eliminate the serial access-waiting problem costing new joiners their first two weeks. |
 | [ROLE-ACCESS-POLICY.md](Policies/ROLE-ACCESS-POLICY.md) | Role-based software and access checklist with dependency ordering and service-portal guidance - so requests run in parallel before day one, not serially after it. |
-| [AGENT-SKILLS-POLICY.md](Policies/AGENT-SKILLS-POLICY.md) | How to write skill files for AI coding agents (Claude, Codex): which policies to link, how agents reach tooling through MCP or a CLI facade, and how task assignment and model routing are configured in JSON. Includes one project's setup as a strict example. |
+| [AGENT-SKILLS-POLICY.md](Policies/AGENT-SKILLS-POLICY.md) | How to write skill files for AI coding agents (Claude, Codex): which policies to link, how agents reach tooling through MCP or a CLI facade, and how task assignment and model routing are configured in JSON. The policy is generic; one project's setup is kept separately as a worked example in [Examples/Agent-Skills/](Examples/Agent-Skills/ME-Agent-Setup.md). |
 | [BEST-ENGINEERING-POLICY.md](Policies/BEST-ENGINEERING-POLICY.md) | Constants, nesting depth, SOLID, and MVP-to-production naming rules. |
 | [DOCUMENTATION-POLICY.md](Policies/DOCUMENTATION-POLICY.md) | Five-tier documentation strategy, README standards, DIP format, and cross-reference rules. |
 | [DRIFT-RESOLUTION-POLICY.md](Policies/DRIFT-RESOLUTION-POLICY.md) | The DFR as the unit of work: a drift is a defect or a non-implementation of a ratified design. Who creates and approves each document type, plus format and closure criteria for Drift Fix Reports. |
@@ -42,7 +42,7 @@ Document templates with writing instructions. Use them as starting points.
 | [DFR-Template.md](Templates/DFR-Template.md) | Drift Fix Report, the unit of work - for defects (behaviour that contradicts the ratified design) and non-implementations (ratified design not yet built). |
 | [RDMP-Template.md](Templates/RDMP-Template.md) | Roadmap - phased delivery tracker with status table. |
 | [DIP-Template.md](Templates/DIP-Template.md) | Document Index Page - repository catalogue with working example links and instructions. |
-| [Semantic-Rule-Template.md](Templates/Semantic-Rule-Template.md) | Guide for writing machine-checkable semantic rules derived from specifications. |
+| [Semantic-Rule-Template.md](Templates/Semantic-Rule-Template.md) | **Optional tier**, for compiler-type projects where rules are machine-consumed and diagnostic-bearing. Guide for writing machine-checkable semantic rules derived from specifications. Other projects: number rules inside the spec instead. |
 | [Specification-Template.md](Templates/Specification-Template.md) | Guide for writing human-readable specifications for a system area. |
 | [Project-Structure-Template.md](Templates/Project-Structure-Template.md) | Recommended folder layout with Architecture as the top-level independent layer. |
 | [Onboarding-Journey-Recorder.md](Templates/Onboarding-Journey-Recorder.md) | Per-joiner living document tracking access grants, induction sessions, mandatory training, role-specific setup, and day-one logistics. |
@@ -51,7 +51,8 @@ Document templates with writing instructions. Use them as starting points.
 ### Examples
 
 Filled-out documents showing the templates applied to a fictitious project (users,
-orders, products). The [DIP-Template.md](Templates/DIP-Template.md) links to these
+orders, products). **Every name, date, file path and commit reference in them is
+invented for illustration and is not verifiable history** (the one exception is the real-project example below). The [DIP-Template.md](Templates/DIP-Template.md) links to these
 so every entry resolves.
 
 | Example | What it shows |
@@ -66,11 +67,15 @@ so every entry resolves.
 | [DFR-003-Architecture-Enforcement-Test-Not-Implemented.md](Examples/Architecture/Drift-Reports/DFR-003-Architecture-Enforcement-Test-Not-Implemented.md) | In-progress non-implementation drift: a ratified rule with no enforcement behind it, with an approver recorded. |
 | [RDMP-Core.md](Examples/Architecture/Roadmap/RDMP-Core.md) | Roadmap with mixed status: shipped, in-progress, and not-started rows. |
 | [RDMP-API.md](Examples/Architecture/Roadmap/RDMP-API.md) | Roadmap with a deferred integration test suite and a known gaps table. |
+| [ME-Agent-Setup.md](Examples/Agent-Skills/ME-Agent-Setup.md) | A real project's agent setup (skill files, MCP, CLI facade, routing config), kept as a worked example for the agent-skills policy. Not fictional; specific to a compiler project. |
 
 ### Tools
 
-Scripts that enforce the policies mechanically. Run them locally or wire them
-into CI using the provided GitHub Actions template.
+**Starter examples, not a finished enforcement system.** These scripts show how an
+adopting organisation can add mechanical checks. They cover only the checks listed
+below; extend them (status-table structure, cross-references, blocking CI) to match
+the policies you adopt. Run them locally or wire them into CI using the provided
+GitHub Actions template.
 
 | Tool | What it checks |
 |------|---------------|

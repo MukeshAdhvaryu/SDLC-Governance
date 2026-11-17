@@ -1,5 +1,7 @@
 # RDMP-API: REST API Delivery
 
+> **Illustrative example.** Fictional project: all names, dates, paths and commit references are invented and are not verifiable history.
+
 > Tracks delivery of the REST API surface, authentication middleware, rate limiting,
 > and API documentation.
 

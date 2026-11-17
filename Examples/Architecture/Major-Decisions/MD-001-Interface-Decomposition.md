@@ -1,5 +1,7 @@
 # MD-001: Atomic Interface Decomposition
 
+> **Illustrative example.** Fictional project: all names, dates, paths and commit references are invented and are not verifiable history.
+
 **Date:** 2026-01-20
 **Status:** Accepted
 **Author:** Platform team, in deliberation with architecture group

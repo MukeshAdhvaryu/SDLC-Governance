@@ -1,5 +1,7 @@
 # DFR-003: Layer Rules Ratified in ADR-003 but No Architecture Test Exists
 
+> **Illustrative example.** Fictional project: all names, dates, paths and commit references are invented and are not verifiable history.
+
 **Date:** 2026-02-16
 **Status:** In Progress
 **Kind:** Non-implementation
