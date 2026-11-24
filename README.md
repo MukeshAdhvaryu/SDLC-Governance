@@ -40,6 +40,7 @@ Document templates with writing instructions. Use them as starting points.
 | [ADR-Template.md](Templates/ADR-Template.md) | Architecture Decision Record. |
 | [MD-Template.md](Templates/MD-Template.md) | Major Decision - for large cross-cutting design choices with full deliberation. |
 | [DFR-Template.md](Templates/DFR-Template.md) | Drift Fix Report, the unit of work - for defects (behaviour that contradicts the ratified design) and non-implementations (ratified design not yet built). |
+| [FFM-Template.md](Templates/FFM-Template.md) | Fact-Finding Mission (spike) - evidence-only investigation of a question nobody can answer yet. Closes by hand-off to ADR/MD/DFR, never by implementation. |
 | [RDMP-Template.md](Templates/RDMP-Template.md) | Roadmap - phased delivery tracker with status table. |
 | [DIP-Template.md](Templates/DIP-Template.md) | Document Index Page - repository catalogue with working example links and instructions. |
 | [Semantic-Rule-Template.md](Templates/Semantic-Rule-Template.md) | **Optional tier**, for compiler-type projects where rules are machine-consumed and diagnostic-bearing. Guide for writing machine-checkable semantic rules derived from specifications. Other projects: number rules inside the spec instead. |

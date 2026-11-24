@@ -27,6 +27,7 @@ when security or sensitivity constrains what can be shared.
 - [Why a Document Index Page Is Necessary](#why-a-document-index-page-is-necessary)
 - [Cross-Reference Rules](#cross-reference-rules)
 - [Security and Sensitivity Rules](#security-and-sensitivity-rules)
+- [Fact-Finding Missions (FFM)](#fact-finding-missions-ffm)
 - [Tier Summary Cheat Sheet](#tier-summary-cheat-sheet)
 - [DIP Table Format](#dip-table-format)
 
@@ -445,6 +446,35 @@ The correct response to "this document contains sensitive information" is a
 stripped version, not no documentation. Absence of documentation is not security.
 It is obscurity, and obscurity fails when the first person who knows the system
 leaves the team.
+
+---
+
+## Fact-Finding Missions (FFM)
+
+The tiers above say where finished documentation lives. They do not cover the work that
+comes before a decision: gathering evidence about a question nobody can answer yet.
+Without a home for that work, it is done in chat or in someone's head, and the next person
+repeats it.
+
+A **Fact-Finding Mission (FFM)**, also called a spike, is a time-independent, evidence-only
+document with a single question. Use [FFM-Template.md](../Templates/FFM-Template.md).
+
+| Document | Answers | Closes by |
+|----------|---------|-----------|
+| FFM | "What is true?" | Hand-off of findings |
+| ADR / MD | "What do we choose?" | Ratification |
+| DFR | "What must change, and is it done?" | Verified implementation |
+
+Rules:
+
+- **One question per FFM.** If it can only be answered by choosing, it is an ADR/MD.
+- **Facts and opinions are separate.** Every fact has a source; findings cite the facts.
+- **No merged code.** Scratch experiments only.
+- **Hand-off, not implementation.** Each finding is routed to an ADR/MD, a DFR, or recorded
+  and dropped. An FFM that closes by building something was a DFR in disguise.
+- **Exit criteria, not deadlines.** The FFM states what must be true for it to conclude.
+- **Location.** `Architecture/FFM/`, with concluded and abandoned FFMs moved to
+  `Architecture/FFM/Closed/`, mirroring Drift Reports.
 
 ---
 
